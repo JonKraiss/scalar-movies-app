@@ -62,3 +62,6 @@ class MovieDeleteView(DeleteView):
 
     model = Movie
     pk_url_kwarg = 'id'
+
+    def get_success_url(self):
+        return reverse('movies:index')
