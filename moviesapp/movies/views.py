@@ -20,14 +20,28 @@ class MovieListView(ListView):
 class MovieDetailView(DetailView):
     """Show the requested movie."""
 
+    model = Movie
+    pk_url_kwarg = 'id'
+
 
 class MovieCreateView(CreateView):
     """Create a new movie."""
+
+    model = Movie
+    pk_url_kwarg = 'id'
+    fields = ['title']
 
 
 class MovieUpdateView(UpdateView):
     """Update the requested movie."""
 
+    model = Movie
+    pk_url_kwarg = 'id'
+    fields = ['title']
+
 
 class MovieDeleteView(DeleteView):
     """Delete the requested movie."""
+
+    model = Movie
+    pk_url_kwarg = 'id'
