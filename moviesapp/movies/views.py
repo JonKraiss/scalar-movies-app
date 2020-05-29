@@ -41,13 +41,20 @@ class MovieCreateView(SuccessMessageMixin, CreateView):
         return super(MovieCreateView, self).form_invalid(form)
 
 
-
-class MovieUpdateView(UpdateView):
+class MovieUpdateView(SuccessMessageMixin, UpdateView):
     """Update the requested movie."""
 
     model = Movie
     pk_url_kwarg = 'id'
     fields = ['title', 'year', 'rated', 'released_on', 'genre', 'director', 'plot']
+    success_message = 'The movie updated successfully'
+
+    def get_success_url(self):
+        return reverse('movies:detail', kwargs={'id': self.object.id})
+
+    def form_invalid(self, form):
+        messages.add_message(self.request, messages.ERROR, 'The update has failed')
+        return super(MovieUpdateView, self).form_invalid(form)
 
 
 class MovieDeleteView(DeleteView):
