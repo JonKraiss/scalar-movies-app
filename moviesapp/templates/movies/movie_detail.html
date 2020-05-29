@@ -2,9 +2,34 @@
 <h3>{{ object.title }}</h3>
 <div class="row">
   <div class="col-sm-12">
-    <dl class="dl-horizontal">
-      <!-- TODO: Implement movie details view-->
-    </dl>
+      <table>
+          <tbody>
+            <tr>
+                <td>Year</td>
+                <td>{{ object.year }}</td>
+            </tr>
+             <tr>
+                <td>Rated</td>
+                <td>{{ object.rated }}</td>
+            </tr>
+            <tr>
+                <td>Released On</td>
+                <td>{{ object.released_on }}</td>
+            </tr>
+            <tr>
+                <td>Genre</td>
+                <td>{{ object.genre }}</td>
+            </tr>
+            <tr>
+                <td>Director</td>
+                <td>{{ object.director}}</td>
+            </tr>
+             <tr>
+                <td>Plot</td>
+                <td>{{ object.plot}}</td>
+            </tr>
+          </tbody>
+      </table>
   </div>
 </div>
 {% endblock %}
