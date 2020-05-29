@@ -2,6 +2,7 @@
 from django.core.urlresolvers import reverse
 from django.core.validators import RegexValidator
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -23,3 +24,8 @@ class Movie(models.Model):
 
     def get_absolute_url(self):
         return reverse('movies:detail', kwargs={'id': self.pk})
+
+    def clean(self):
+        if Movie.objects.filter(title=self.title).exists():
+            raise ValidationError('Movie with this Title already exists.')
+        return super(Movie, self).clean()
