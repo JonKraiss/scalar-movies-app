@@ -3,20 +3,23 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <!-- TODO: Add table columns -->
-      <th colspan="2"><b>Action</b></th>
+        <th></th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Rating</th>
     </tr>
   </thead>
   <tbody>
     {% for movie in movie_list %}
     <tr>
-      <td>
+        <td>
         <a href="{{ movie.get_absolute_url }}">{{ movie.pk }}</a>
-      </td>
-      <td>{{ movie.title }}</td>
-      <!-- TODO: Render more movie properties and make sure action links work -->
-      <td><a href="{% url 'movie:update' movie.pk %}">Edit</a></td>
-      <td><a href="{% url 'movie:delete' movie.pk %}">Delete</a></td>
+        </td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.genre }}</td>
+        <td>{{ movie.get_average_rating }}</td>
+        <td><a href="{% url 'movie:update' movie.pk %}">Edit</a></td>
+        <td><a href="{% url 'movie:delete' movie.pk %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
