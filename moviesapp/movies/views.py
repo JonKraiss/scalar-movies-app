@@ -5,11 +5,11 @@ from django.core.exceptions import ValidationError
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.http import Http404
 from django.urls import reverse
 
-from .models import Movie
+from .models import Movie, Rating
 
 
 class MovieListView(ListView):
@@ -65,3 +65,14 @@ class MovieDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('movies:index')
+
+
+def create_rating(request, id):
+    if request.method == 'GET':
+        return render(request, 'movies/rating_create.html')
+    elif request.method == 'POST':
+        score = request.POST['score']
+        review = request.POST['review']
+        movie = Movie.objects.get(pk=id)
+        movie.rating_set.create(review=review, score=score)
+        return redirect(reverse('movies:detail', kwargs={'id': id}))

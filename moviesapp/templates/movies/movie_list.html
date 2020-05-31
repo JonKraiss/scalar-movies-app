@@ -17,7 +17,13 @@
         </td>
         <td>{{ movie.title }}</td>
         <td>{{ movie.genre }}</td>
-        <td>{{ movie.get_average_rating }}</td>
+        <td>
+            {% if movie.get_average_rating %}
+                {{ movie.get_average_rating }}/5.0
+            {% else %}
+                No ratings
+            {% endif %}
+        </td>
         <td><a href="{% url 'movie:update' movie.pk %}">Edit</a></td>
         <td><a href="{% url 'movie:delete' movie.pk %}">Delete</a></td>
     </tr>

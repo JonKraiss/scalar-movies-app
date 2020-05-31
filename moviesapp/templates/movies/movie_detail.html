@@ -30,6 +30,18 @@
             </tr>
           </tbody>
       </table>
+      <a href="{% url 'movies:create_rating' id=object.id %}">Add new rating</a>
+      <h4>Ratings</h4>
+        <table>
+            <tbody>
+            {% for r in object.rating_set.all %}
+                <tr>
+                    <td>{{ r.score }}</td>
+                    <td>{{ r.review }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
   </div>
 </div>
 {% endblock %}
