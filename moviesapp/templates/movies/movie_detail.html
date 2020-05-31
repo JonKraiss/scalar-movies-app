@@ -36,8 +36,8 @@
             <tbody>
             {% for r in object.rating_set.all %}
                 <tr>
-                    <td>{{ r.score }}</td>
-                    <td>{{ r.review }}</td>
+                    <td>{{ r.score }} - </td>
+                    <td> - {{ r.review }}</td>
                 </tr>
             {% endfor %}
             </tbody>
