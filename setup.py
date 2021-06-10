@@ -10,7 +10,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'wheel==0.29.0',
-        'django==1.11.28',
+        'django==2.2.24',
         'nose==1.3.7',
         'django-nose==1.4.4',
         'nosedjango==1.0.13'
