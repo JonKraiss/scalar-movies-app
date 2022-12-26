@@ -9,7 +9,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'wheel==0.29.0',
+        'wheel==0.38.1',
         'django==1.11.28',
         'nose==1.3.7',
         'django-nose==1.4.4',
